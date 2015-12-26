@@ -1,0 +1,86 @@
+---
+meta:
+  position:
+    x: 0
+    y: 0
+  velocity:
+    x: 0
+    y: 32
+  length: 900
+
+---
+final: MiniBossEvent
+
+---
+events:
+  - type: enemy
+    class: BioMechBaby
+    position:
+      x: 230
+      y: 700
+    spawn:
+      y: 0
+
+  - type: enemy
+    class: Plunk
+    position:
+      x: 130
+      y: 700
+    spawn:
+      y: 100
+
+  - type: enemy
+    class: Plunk
+    position:
+      x: 160
+      y: 700
+    spawn:
+      y: 100
+
+  - type: enemy
+    class: Plunk
+    position:
+      x: 330
+      y: 700
+    spawn:
+      y: 200
+
+  - type: enemy
+    class: Plunk
+    position:
+      x: 430
+      y: 700
+    spawn:
+      y: 200
+
+  - type: enemy
+    class: BioMechChild
+    position:
+      x: 130
+      y: 700
+    spawn:
+      y: 300
+
+  - type: enemy
+    class: BioMechChild
+    position:
+      x: 230
+      y: 700
+    spawn:
+      y: 300
+
+  - type: enemy
+    class: BioMechChild
+    position:
+      x: 330
+      y: 700
+    spawn:
+      y: 300
+
+  - type: enemy
+    class: BioMechChild
+    position:
+      x: 430
+      y: 700
+    spawn:
+      y: 300

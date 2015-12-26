@@ -1,0 +1,91 @@
+
+    public final OrthographicCamera levelCamera;
+
+    public TiledMap map;
+    public TiledMapRenderer tiledMapRenderer;
+    public float levelY;
+
+
+               public boolean scrolling = true;
+                   public boolean showCollisionGrid = false;
+
+        levelCamera = new OrthographicCamera();
+        levelCamera.setToOrtho(false, game.config.width, game.config.height);
+     //   levelCamera.translate(0, -game.config.height);
+        levelCamera.update();
+
+            levelY = 0; //-game.config.height;
+
+            events.addAll(new Level1().events(game, this));
+
+            final TmxMapLoader tmxMapLoader = new TmxMapLoader();
+
+            map = tmxMapLoader.load("core/resources/levels/level1.tmx");
+            tiledMapRenderer = new OrthogonalTiledMapRenderer(map);
+
+
+
+                    // tell the camera to update its matrices.
+                    if(scrolling) {
+                        final float deltaTime = Gdx.graphics.getDeltaTime();
+                        final TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("tiles");
+                        if (layer.getHeight() * 16 - levelY > game.config.height) {
+                            levelCamera.translate(0, 32 * deltaTime);
+                            levelY += 32 * deltaTime;
+                        } else {
+                            scrolling = false;
+                            levelCamera.translate(0, -((layer.getHeight() * 16 - levelY) - game.config.height), 0);
+                            levelY = layer.getHeight() * 16 - game.config.height;
+                        }
+                       // System.out.println(layer.getHeight() * 16 - levelY);
+                    }
+
+                    levelCamera.update();
+                    tiledMapRenderer.setView(levelCamera);
+                    tiledMapRenderer.render();
+
+
+
+
+
+
+
+
+                    entity
+
+        final CollisionEvent collisionEvent = super.overlapsLevel(gameScreen);
+        if(collisionEvent.collided) {
+            hit(1000);
+        }
+
+
+                        protected CollisionEvent overlapsLevel(final GameScreen gameScreen) {
+                            if(gameScreen.levelY < 0) { return CollisionEvent.FALSE; }
+
+                            final TiledMap map = gameScreen.map;
+                            final TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("tiles");
+
+                            final int startY = (int) gameScreen.levelY / 16;
+                            final int endY = startY + game.config.height / 16;
+                            final float mod = gameScreen.levelY / 16f;
+
+                            for (int y = startY, y0 = 0; y <= endY && y < layer.getHeight(); y++, y0++) {
+                                for (int x = 0; x < layer.getWidth(); x++) {
+                                    final TiledMapTileLayer.Cell cell = layer.getCell(x, y);
+                                    if (cell != null) {
+                                        RECT1.set(x * 16, y0 * 16 - mod, 16, 16);
+                                        RECT2.set(this.x, this.y, this.width, this.height);
+                                        if(gameScreen.showCollisionGrid) {
+                                            shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+                                            shapeRenderer.setColor(Color.WHITE);
+                                            shapeRenderer.rect(RECT1.x, RECT1.y, RECT1.width, RECT1.height);
+                                            shapeRenderer.end();
+                                        }
+                                        if(RECT1.overlaps(RECT2)) {
+                                            return new CollisionEvent(true, RECT1);
+                                        }
+                                    }
+                                }
+                            }
+                            return CollisionEvent.FALSE;
+                        }

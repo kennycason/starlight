@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="100" tilewidth="16" tileheight="16" nextobjectid="117">
+ <properties>
+  <property name="final" value="MiniBossEvent"/>
+  <property name="name" value="Level 1"/>
+ </properties>
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16">
+  <image source="../sprites/tiles.png" width="320" height="320"/>
+ </tileset>
+ <layer name="tiles" width="40" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2FlSwzAMBuBcjLAMcADKVt5hWHsAlnIC1huwHBRlqGY8RlYkxwl++B++tzT+K8lO2rZpmhYAAAAAAAAAAAAAAAAAAAAAAGACT+S5ghwpH+SzghzoD/oDOswq1GKPzMh2wiE5Uj7/ZVzHel2c7dxIyziGnUSOJbmrIONcWH+TbJF1sjFSxm/jdTdCnQ6a33mb9fR6t2CdtLm8VXqpOYnucxwpWd+cjGE+aY776ut9fmnzFrsii+Cz0hxzfs7BPeTaeJ5ffP7tG7ItySNZM+Yb+hztenO54skW5uN9dk8eVtctjOv3mQf5tIycrRXydV7IK3kj74m1rOdKiL+7ljGuW5zPs652lqTuo+1fqW5S/UrUShP2JxT3ypqvD+/JvncPT/1T9fO+l5w2f/fTtXCf+IzUehJn0+oX3ieV3bKfvGdTTr7cmfTOr/QOm7p26t9eXbYLQer60r+9tPnuZvnMmc/ar5z3fak/fD4OyVeS1B8po7cWufWy9oUz8rmV6tt/Cs8ty2xYZ8hjSB+se3fM/1dy8ns+U9vMWL/LlLlLrmXtTe19qc0Px/UQRA==
+  </data>
+ </layer>
+ <objectgroup name="objects">
+  <object id="63" name="Plunk" type="enemy" x="413.333" y="1466.67"/>
+  <object id="81" name="Plunk" type="enemy" x="370" y="1460.67"/>
+  <object id="82" name="Plunk" type="enemy" x="316" y="1451.33"/>
+  <object id="83" name="Plunk" type="enemy" x="274" y="1449.33"/>
+  <object id="84" name="BioMechBaby" type="enemy" x="288" y="1323.33"/>
+  <object id="87" name="Plunk" type="enemy" x="538" y="1227.33"/>
+  <object id="88" name="Plunk" type="enemy" x="495.333" y="1209.33"/>
+  <object id="89" name="Plunk" type="enemy" x="316.667" y="1160"/>
+  <object id="90" name="Plunk" type="enemy" x="152" y="1156"/>
+  <object id="91" name="Plunk" type="enemy" x="69.3333" y="1208"/>
+  <object id="92" name="BioMechBaby" type="enemy" x="311.333" y="1260"/>
+  <object id="93" name="BioMechBaby" type="enemy" x="358" y="1246"/>
+  <object id="94" name="BioMechBaby" type="enemy" x="522" y="1297.33"/>
+  <object id="96" name="BioMechBaby" type="enemy" x="280.667" y="956"/>
+  <object id="97" name="BioMechBaby" type="enemy" x="318" y="958"/>
+  <object id="98" name="BioMechBaby" type="enemy" x="344" y="957.333"/>
+  <object id="99" name="BioMechBaby" type="enemy" x="375.333" y="956.667"/>
+  <object id="100" name="BioMechBaby" type="enemy" x="556" y="946.667"/>
+  <object id="101" name="BioMechBaby" type="enemy" x="506" y="896"/>
+  <object id="102" name="BioMechBaby" type="enemy" x="152" y="889.333"/>
+  <object id="103" name="BioMechBaby" type="enemy" x="74" y="974.667"/>
+  <object id="104" name="BioMechChild" type="enemy" x="392.667" y="606.667"/>
+  <object id="105" name="BioMechChild" type="enemy" x="230.667" y="608"/>
+  <object id="106" name="BioMechChild" type="enemy" x="406" y="762"/>
+  <object id="107" name="BioMechChild" type="enemy" x="330" y="760.667"/>
+  <object id="108" name="BioMechChild" type="enemy" x="228" y="753.333"/>
+  <object id="109" name="BioMechChild" type="enemy" x="491.333" y="414"/>
+  <object id="110" name="BioMechChild" type="enemy" x="380" y="420"/>
+  <object id="111" name="BioMechChild" type="enemy" x="229.333" y="418.667"/>
+  <object id="112" name="BioMechChild" type="enemy" x="182.667" y="295.333"/>
+  <object id="113" name="BioMechChild" type="enemy" x="428" y="230.667"/>
+  <object id="114" name="BioMechChild" type="enemy" x="192" y="175.333"/>
+ </objectgroup>
+</map>
