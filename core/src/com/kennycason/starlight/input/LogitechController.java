@@ -74,6 +74,7 @@ public class LogitechController implements Controller {
 
     @Override
     public boolean isA() {
+        if(controller == null) { return false; }
         final boolean pressed = controller.getButton(buttonMapper.get(Button.A));
         if(pressed) { inputTimeRecorder.recordA(); }
         return pressed;
