@@ -1,48 +1,32 @@
 package com.kennycason.starlight.input;
 
+import com.badlogic.gdx.utils.ObjectMap;
+import com.badlogic.gdx.utils.TimeUtils;
+import com.kennycason.starlight.input.controls.Controls;
+import com.kennycason.starlight.input.mapping.AxisMapper;
+import com.kennycason.starlight.input.mapping.ButtonMapper;
+
 /**
  * Created by kenny on 5/22/15.
  *
  * Simple controller interface
  */
-public interface Controller {
+public abstract class Controller<V extends Controls> {
 
-    boolean isUp();
-    boolean isDown();
-    boolean isLeft();
-    boolean isRight();
+    private ObjectMap<V, Long> lastPressed = new ObjectMap<>();
 
-    boolean isStart();
-    boolean isSelect();
+    protected ButtonMapper<V> buttonMapper;
 
-    boolean isA();
-    boolean isB();
-    boolean isX();
-    boolean isY();
+    protected AxisMapper<V> axisMapper;
 
-    boolean isL1();
-    boolean isL2();
-    boolean isR1();
-    boolean isR2();
+    public abstract boolean isPressed(V control);
 
-    boolean isAny();
+    public long when(V control) {
+        return lastPressed.get(control, 0L);
+    }
 
-    long whenUp();
-    long whenDown();
-    long whenLeft();
-    long whenRight();
-
-    long whenStart();
-    long whenSelect();
-
-    long whenA();
-    long whenB();
-    long whenX();
-    long whenY();
-
-    long whenL1();
-    long whenL2();
-    long whenR1();
-    long whenR2();
+    public void record(V control) {
+        lastPressed.put(control, TimeUtils.millis());
+    }
 
 }

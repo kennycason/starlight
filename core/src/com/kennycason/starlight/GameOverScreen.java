@@ -6,9 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.kennycason.starlight.input.Controller;
-import com.kennycason.starlight.input.KeyboardController;
-import com.kennycason.starlight.input.LogitechController;
-import com.kennycason.starlight.input.MultiController;
+import com.kennycason.starlight.input.StarLightControllerFactory;
+import com.kennycason.starlight.input.controls.GameControls;
 import com.kennycason.starlight.resources.Sounds;
 import com.kennycason.starlight.resources.Textures;
 
@@ -23,7 +22,8 @@ public class GameOverScreen implements Screen {
 
     private long startTime = 0;
 
-    private Controller controller = new MultiController(new KeyboardController(), new LogitechController());
+    private Controller<GameControls> controller = StarLightControllerFactory.buildMultiController();
+
 
     public GameOverScreen(final StarLight game) {
         this.game = game;
@@ -46,7 +46,9 @@ public class GameOverScreen implements Screen {
         game.batch.end();
 
         if(TimeUtils.timeSinceMillis(startTime) > 500) {
-            if (controller.isAny()) {
+            if (controller.isPressed(GameControls.START)
+                    || controller.isPressed(GameControls.A)
+                    || controller.isPressed(GameControls.B)) {
                 game.setScreen(new TitleScreen(game));
                 dispose();
             }

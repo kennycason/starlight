@@ -13,9 +13,8 @@ import com.kennycason.starlight.entity.player.Ship;
 import com.kennycason.starlight.entity.weapon.bullet.Bullet;
 import com.kennycason.starlight.event.Event;
 import com.kennycason.starlight.input.Controller;
-import com.kennycason.starlight.input.KeyboardController;
-import com.kennycason.starlight.input.LogitechController;
-import com.kennycason.starlight.input.MultiController;
+import com.kennycason.starlight.input.StarLightControllerFactory;
+import com.kennycason.starlight.input.controls.GameControls;
 import com.kennycason.starlight.item.Item;
 import com.kennycason.starlight.level.Level;
 import com.kennycason.starlight.level.TmxLevelLoader;
@@ -45,7 +44,7 @@ public class GameScreen implements Screen {
     public final Array<Enemy> enemies = new Array<>();
     public final Array<Item> items = new Array<>();
 
-    private Controller controller = new MultiController(new KeyboardController(), new LogitechController());
+    private Controller<GameControls> controller = StarLightControllerFactory.buildMultiController();
 
     private boolean printState = false;
 
@@ -243,25 +242,25 @@ public class GameScreen implements Screen {
         ship.vx = 0;
         ship.vy = 0;
 
-        if (controller.isLeft()) {
+        if (controller.isPressed(GameControls.DPAD_LEFT)) {
             ship.vx = -deltaTime;
         }
-        if (controller.isRight()) {
+        if (controller.isPressed(GameControls.DPAD_RIGHT)) {
             ship.vx = deltaTime;
         }
-        if (controller.isUp()) {
+        if (controller.isPressed(GameControls.DPAD_UP)) {
             ship.vy = deltaTime;
         }
-        if (controller.isDown()) {
+        if (controller.isPressed(GameControls.DPAD_DOWN)) {
             ship.vy = -deltaTime;
         }
-        if (controller.isL1()) {
+        if (controller.isPressed(GameControls.L1)) {
             ship.weaponScrollLeft();
         }
-        if (controller.isR1()) {
+        if (controller.isPressed(GameControls.R1)) {
             ship.weaponScrollRight();
         }
-        if (controller.isSelect()) {
+        if (controller.isPressed(GameControls.SELECT)) {
             game.setScreen(new GameScreen(game));
         }
         float[] v = Vector.unit2d(ship.vx, ship.vy);
@@ -269,7 +268,7 @@ public class GameScreen implements Screen {
         ship.vy = v[1] * ship.speed;
         ship.handle(this);
 
-        if (controller.isA()) {
+        if (controller.isPressed(GameControls.A)) {
             ship.shoot(this);
         }
     }
